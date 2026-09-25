@@ -7,3 +7,11 @@ for high-throughput redirects
 
 • Containerized and deployed services to AWS with Terraform and Kubernetes, adding CI/CD, monitoring, and load
 testing to measure p95 latency, throughput, and failure recovery
+
+## Local development
+
+The first milestone uses an in-memory repository so the domain behavior can be learned and tested independently.
+PostgreSQL is defined in `docker-compose.yml`; its schema is in `migrations/001_create_links.sql`.
+
+The `links.url_hash` and `links.short_code` columns are both unique. These constraints protect correctness when
+multiple requests try to create the same link concurrently.
